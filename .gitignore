@@ -1,0 +1,17 @@
+# Eclipse
+.classpath
+.project
+
+# Intellij
+.idea
+.idea/workspace.xml
+/SeleniumDocMaven.iml
+.settings/
+*.iws
+
+# Maven
+log/
+target/
+html/
+bin/
+*.iml
