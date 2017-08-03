@@ -15,7 +15,6 @@ public class FileEventLogger implements EventLogger {
     }
 
     public void logEvent(Event event) throws IOException {
-        File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
         FileUtils.writeStringToFile(file, event.toString());
     }
 

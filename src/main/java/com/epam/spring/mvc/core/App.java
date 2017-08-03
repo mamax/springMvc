@@ -1,8 +1,8 @@
 package com.epam.spring.mvc.core;
 
 import com.epam.spring.mvc.beans.Client;
-import com.epam.spring.mvc.loggers.ConsoleEventLogger;
 import com.epam.spring.mvc.loggers.Event;
+import com.epam.spring.mvc.loggers.FileEventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,9 +14,9 @@ import java.util.Date;
 public class App {
 
     private Client client;
-    private ConsoleEventLogger eventLogger;
+    private FileEventLogger eventLogger;
 
-    public App(Client client, ConsoleEventLogger eventLogger) {
+    public App(Client client, FileEventLogger eventLogger) {
         this.client = client;
         this.eventLogger = eventLogger;
     }
