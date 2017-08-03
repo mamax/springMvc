@@ -7,12 +7,22 @@ public class Event {
 
     private int id;
     private String msg;
-    private Date data;
-    private DateFormat df;
+    private Date date;
+    private DateFormat dateFormat;
 
-    public Event(Date data, DateFormat df) {
-        this.data = data;
-        this.df = df;
+    @Override
+    public String toString() {
+        return "Event{" +
+                "msg='" + msg + '\'' +
+                ", date=" + date +
+                ", dateFormat=" + dateFormat.format(date) +
+                '}';
+    }
+
+    public Event(String msg, Date date, DateFormat dateFormat) {
+        this.msg = msg;
+        this.date = date;
+        this.dateFormat = dateFormat;
     }
 
     public String getMsg() {
@@ -23,14 +33,9 @@ public class Event {
         this.msg = msg;
     }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                ", df=" + df +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return dateFormat.format(date);
+//    }
 
 }

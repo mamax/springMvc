@@ -17,11 +17,11 @@
         <constructor-arg ref="eventLogger"/>
     </bean>
 
-    <!--<bean id="event" class="com.epam.spring.mvc.loggers.Event" scope="prototype">-->
-        <!--<constructor-arg>-->
-            <!--<bean class="java.util.Date"/>-->
-        <!--</constructor-arg>-->
-    <!--</bean>-->
+    <bean id="event" class="com.epam.spring.mvc.loggers.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+    </bean>
 
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateInstance"/>
 
