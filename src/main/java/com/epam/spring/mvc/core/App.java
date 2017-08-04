@@ -32,6 +32,8 @@ public class App {
         App app = context.getBean("app", App.class);
 
         app.logEvent("Some event for user 1");
+        app.logEvent("Some event for user 11");
+        app.logEvent("Some event for user 22");
 
         ConfigurableApplicationContext context1 = (ConfigurableApplicationContext) context;
         context1.close();

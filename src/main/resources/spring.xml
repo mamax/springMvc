@@ -29,4 +29,9 @@
         <constructor-arg value="fileToWriteEvents.txt"/>
     </bean>
 
+    <!--<bean id="eventLogger" class="com.epam.spring.mvc.loggers.CacheFileEventLogger" destroy-method="destroy">-->
+        <!--<constructor-arg value="fileToWriteEvents.txt"/>-->
+        <!--<constructor-arg value="2000"/>-->
+    <!--</bean>-->
+
 </beans>

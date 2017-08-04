@@ -16,7 +16,7 @@ public class Event {
                 "msg='" + msg + '\'' +
                 ", date=" + date +
                 ", dateFormat=" + dateFormat.format(date) +
-                '}';
+                '}' + "\n";
     }
 
     public Event(String msg, Date date, DateFormat dateFormat) {

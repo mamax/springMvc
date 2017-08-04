@@ -8,14 +8,17 @@ import java.io.IOException;
 public class FileEventLogger implements EventLogger {
 
     private String fileName;
-    private File file;
+    protected File file;
+    public StringBuffer sbf = new StringBuffer();
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
     }
 
     public void logEvent(Event event) throws IOException {
-        FileUtils.writeStringToFile(file, event.toString());
+        sbf.append(event.toString());
+
+        FileUtils.writeStringToFile(file, sbf.toString());
     }
 
     /**
