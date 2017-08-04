@@ -14,17 +14,17 @@ import java.util.Date;
 public class App {
 
     private Client client;
-    private FileEventLogger eventLogger;
+    private FileEventLogger fileEventLogger;
 
-    public App(Client client, FileEventLogger eventLogger) {
+    public App(Client client, FileEventLogger fileEventLogger) {
         this.client = client;
-        this.eventLogger = eventLogger;
+        this.fileEventLogger = fileEventLogger;
     }
 
     private void logEvent(String msg) throws IOException {
         String message = msg.replaceAll(client.getId(), client.getFullName());
         Event event = new Event(message, new Date(), new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"));
-        eventLogger.logEvent(event);
+        fileEventLogger.logEvent(event);
     }
 
     public static void main(String[] args) throws IOException {
