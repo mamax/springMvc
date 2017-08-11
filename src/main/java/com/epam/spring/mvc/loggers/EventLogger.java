@@ -2,7 +2,7 @@ package com.epam.spring.mvc.loggers;
 
 import java.io.IOException;
 
-public interface EventLogger {
+public abstract class EventLogger {
 
-    void logEvent(Event event) throws IOException;
+    public abstract void logEvent(Event event) throws IOException;
 }

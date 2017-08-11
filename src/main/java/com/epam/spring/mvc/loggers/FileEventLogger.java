@@ -5,7 +5,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class FileEventLogger implements EventLogger {
+public class FileEventLogger extends EventLogger {
 
     protected String fileName;
     protected File file;

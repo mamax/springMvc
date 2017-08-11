@@ -33,9 +33,5 @@ public class Event {
         this.msg = msg;
     }
 
-//    @Override
-//    public String toString() {
-//        return dateFormat.format(date);
-//    }
 
 }
