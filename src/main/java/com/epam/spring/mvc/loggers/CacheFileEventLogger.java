@@ -11,9 +11,10 @@ public class CacheFileEventLogger extends FileEventLogger {
         this.cacheSize = cacheSize;
     }
 
-    int cacheSize;
-    List<Event> cache = new ArrayList<Event>();
+    private int cacheSize;
+    private List<Event> cache = new ArrayList<Event>();
 
+    @Override
     public void logEvent(Event event) throws IOException {
         cache.add(event);
 
@@ -24,8 +25,8 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     private void writeEventsFromCache(List<Event> cache) throws IOException {
-        for (int i = 0; i < cache.size(); i++) {
-            sbf.append(cache.get(i).toString());
+        for ( Event e : cache) {
+            sbf.append(e.toString());
             writeStringToFile();
         }
     }

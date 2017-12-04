@@ -1,10 +1,7 @@
 package com.epam.spring.mvc.core;
 
 import com.epam.spring.mvc.beans.Client;
-import com.epam.spring.mvc.loggers.CacheFileEventLogger;
-import com.epam.spring.mvc.loggers.Event;
-import com.epam.spring.mvc.loggers.EventLogger;
-import com.epam.spring.mvc.loggers.EventType;
+import com.epam.spring.mvc.loggers.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,12 +15,12 @@ public class App {
 
     private Client client;
     private Map<EventType, EventLogger> loggers;
-    private CacheFileEventLogger cacheFileEventLogger;
+    private EventLogger eventLogger;
 
-    public App(Client client, Map<EventType, EventLogger> loggers, CacheFileEventLogger eventLogger) {
+    public App(Client client, Map<EventType, EventLogger> loggers, EventLogger eventLogger) {
         this.client = client;
         this.loggers = loggers;
-        this.cacheFileEventLogger = eventLogger;
+        this.eventLogger = eventLogger;
     }
 
     private void logEvent(EventType type, String msg) throws IOException {
@@ -31,12 +28,18 @@ public class App {
         Event event = new Event(message, new Date(), new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"));
 
         EventLogger logger = loggers.get(type);
+
         if (logger == null){
-            logger = cacheFileEventLogger;
+            logger = new CacheFileEventLogger("log.txt", 5);
         }
-        else {
-            cacheFileEventLogger.logEvent(event);
+        else if (type == EventType.INFO){
+            logger = new ConsoleEventLogger();
         }
+        else if (type == EventType.ERROR){
+            logger = new ConsoleEventLogger();
+        }
+
+        logger.logEvent(event);
     }
 
     public static void main(String[] args) throws IOException {

@@ -5,10 +5,10 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class FileEventLogger extends EventLogger {
+public class FileEventLogger implements EventLogger {
 
-    protected String fileName;
-    protected File file;
+    private String fileName;
+    private File file;
     protected StringBuffer sbf = new StringBuffer();
 
     public FileEventLogger(String fileName) {
@@ -17,7 +17,6 @@ public class FileEventLogger extends EventLogger {
 
     public void logEvent(Event event) throws IOException {
         sbf.append(event.toString());
-
         writeStringToFile();
     }
 
@@ -29,7 +28,7 @@ public class FileEventLogger extends EventLogger {
      * for spring bean
      * @throws IOException
      */
-    private void init() throws IOException{
+    protected void init() throws IOException{
         this.file = new File(getClass().getClassLoader().getResource(fileName).getFile());
 
         if (!file.canWrite()){

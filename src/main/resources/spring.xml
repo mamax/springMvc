@@ -29,14 +29,19 @@
 
     <bean id="app" class="com.epam.spring.mvc.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="loggerMap"/>
-        <constructor-arg ref="cacheFileEventLogger" />
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="eventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg ref="eventLogger" />
     </bean>
 
-        <util:map id="loggerMap">
-            <entry key="INFO" value-ref="eventLogger"/>
-            <entry key="ERROR" value-ref="combinedEventLogger"/>
-        </util:map>
+        <!--<util:map id="loggerMap">-->
+            <!--<entry key="INFO" value-ref="eventLogger"/>-->
+            <!--<entry key="ERROR" value-ref="combinedEventLogger"/>-->
+        <!--</util:map>-->
 
     <bean id="event" class="com.epam.spring.mvc.loggers.Event" scope="prototype">
         <constructor-arg>

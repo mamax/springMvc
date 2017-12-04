@@ -1,19 +1,20 @@
 package com.epam.spring.mvc.loggers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class CombinedEventLogger extends EventLogger{
+public class CombinedEventLogger implements EventLogger{
 
-    ArrayList<Event> loggers = new ArrayList();
+    private Collection<EventLogger> loggers;
 
-    public CombinedEventLogger(ArrayList<Event> loggers) {
+    public CombinedEventLogger(List<EventLogger> loggers) {
         this.loggers = loggers;
     }
 
     public void logEvent(Event event) throws IOException {
-        for (Event e :loggers){
-            e.getMsg();
+        for (EventLogger e :loggers){
+            e.logEvent(event);
         }
     }
 }
