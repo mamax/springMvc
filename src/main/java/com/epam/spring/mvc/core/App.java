@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public class App {
             logger = new ConsoleEventLogger();
         }
         else if (type == EventType.ERROR){
-            logger = new ConsoleEventLogger();
+            logger = new CombinedEventLogger(Arrays.asList(new ConsoleEventLogger(), new FileEventLogger("log.txt")));
         }
 
         logger.logEvent(event);
