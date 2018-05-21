@@ -22,9 +22,10 @@
         </property>
     </bean>
 
-    <bean id="client" class="com.epam.spring.mvc.beans.Client" p:greeting="${greeting}">
+    <bean id="client" class="com.epam.spring.mvc.beans.Client">
         <constructor-arg index="0" value="${id}" />
         <constructor-arg value="${name}" />
+        <property name="greeting" value="${greeting}"/>
     </bean>
 
     <bean id="app" class="com.epam.spring.mvc.core.App">
