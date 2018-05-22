@@ -46,4 +46,6 @@
             <!--<entry key="ERROR" value-ref="combinedEventLogger"/>-->
         <!--</util:map>-->
 
+    <bean id="logaspect" class="com.epam.spring.mvc.loggers.LoggingAspect"/>
+
 </beans>
